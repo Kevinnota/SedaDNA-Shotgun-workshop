@@ -1,3 +1,10 @@
+######################################################
+#                                                    #
+#               taxonomy filter                      #
+#                 Kevin Nota                         #
+#                                                    #
+######################################################
+
 import pandas as pd
 import re
 from tqdm import tqdm
@@ -32,11 +39,11 @@ print("\n")
 PIA_tabel = pd.read_table(args.input,  header=None, delimiter=",")
 ncbi_taxonomy_nodes = pd.read_table(args.taxonomy+"/nodes.dmp",  header=None, delimiter="\t")
 #ncbi_taxonomy_merged = pd.read_table("merged.dmp",  header=None, delimiter="\t")
-ncbi_taxonomy_names = pd.read_table("names.dmp",  header=None, delimiter="\t")
+ncbi_taxonomy_names = pd.read_table(args.taxonomy+"/names.dmp",  header=None, delimiter="\t")
 filtered_reads = pd.DataFrame()
 
 print("\n")
-print("Overview of which taxa will be kept")
+print("Overview of which taxa will be kept:")
 taxids=(re.split(",", args.taxids))
 taxids=[int(x) for x in taxids]
 names_to_keep = []
@@ -90,4 +97,11 @@ print()
 SeqIO.write(new_fasta, args.output+".fasta", "fasta")
 filtered_reads.to_csv(args.output+".csv", header=True, index=False, sep=',')
             
-print("Done")
+print(r"""  
+             _
+            / \
+           / D \
+          /  O  \
+         /   N   \
+        /___ E ___\
+            | |  """)
