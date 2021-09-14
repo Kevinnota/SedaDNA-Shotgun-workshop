@@ -18,7 +18,7 @@ parser.add_argument('-t', '--taxonomy', type=str,
     wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
     |$
     tar -zxvf taxdump.tar.gz '''))
-parser.add_argument('-r', '--reads', 
+parser.add_argument('-f', '--reads', 
     help="Path to the input reads that need to be filtered", type=str)
 parser.add_argument('-ids', '--taxids', 
     help="Taxids of the highest taxonomic level to keep | such as for plants use 33090 (Viridiplantae)", type=str)
