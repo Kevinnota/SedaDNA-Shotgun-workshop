@@ -1,9 +1,8 @@
-######################################################
-#                                                    #
-#               taxonomy filter                      #
-#                 Kevin Nota                         #
-#                                                    #
-######################################################
+###############################################################################
+#                                                                             #
+#                         Taxonomy filter after PIA                           #
+#                                                                             #
+###############################################################################
 
 import pandas as pd
 import re
@@ -15,7 +14,7 @@ import textwrap
 parser = argparse.ArgumentParser(description='Input and output')
 
 parser.add_argument('-in', '--input', 
-    help="Path to the input file", type=str)
+    help="Path to the input file | Summary_Reads_MEGAN.txt of the PIA output | or table with readname,taxid and no header", type=str)
 parser.add_argument('-o', '--output', 
     help="Path and basename of the output files", type=str)
 parser.add_argument('-t', '--taxonomy', type=str,
