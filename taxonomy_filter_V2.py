@@ -62,7 +62,14 @@ for i in tqdm(range(len(PIA_tabel))): #there might be a problem here when the ta
     parent_id=PIA_tabel.loc[i, 1]
     level_reached=False
     if(parent_id in taxids):
-        level_reached=True    
+        level_reached=True
+        for x in range(len(taxids)):
+            if(taxids[x]==parent_id):
+                taxon_name=names_to_keep[x]
+            data = {'read':[PIA_tabel.loc[i,0]],
+                'original_taxid':[PIA_tabel.loc[i,1]],
+                'taxon_group':[taxon_name]}
+            filtered_reads=filtered_reads.append(pd.DataFrame(data), ignore_index=True)
     while not (level_reached==True):
         parent_id=ncbi_taxonomy_nodes.loc[(parent_id==ncbi_taxonomy_nodes.loc[:,0]),2].item()
         if(parent_id in taxids):
